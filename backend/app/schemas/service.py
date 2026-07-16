@@ -17,5 +17,9 @@ class ServiceOut(BaseModel):
     scheduled_start: Optional[datetime] = None
     scheduled_end: Optional[datetime] = None
     created_at: Optional[datetime] = None
+    review: Optional['ReviewOut'] = None
 
     model_config = {"from_attributes": True}
+
+from app.schemas.review import ReviewOut
+ServiceOut.model_rebuild()

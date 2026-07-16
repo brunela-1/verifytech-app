@@ -68,6 +68,7 @@ export interface ServiceData {
   scheduled_start?: string;
   scheduled_end?: string;
   created_at?: string;
+  review?: ReviewData;
 }
 
 export interface ReviewData {

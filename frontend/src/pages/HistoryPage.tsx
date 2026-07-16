@@ -5,6 +5,7 @@ import { getServiceHistory } from '../api/services';
 import { useAuth } from '../store/AuthContext';
 import { ChevronRight, Calendar, CheckCircle, XCircle, Star } from 'lucide-react';
 import type { ServiceData } from '../types';
+import StarRatingInput from '../components/StarRatingInput';
 
 const statusConfig: Record<string, { label: string; icon: React.ReactNode; cls: string; bg: string }> = {
   completed: {
@@ -141,7 +142,17 @@ export default function HistoryPage() {
                       </div>
                     </div>
 
-                    <div className="flex gap-2 shrink-0">
+                    <div className="flex gap-2 shrink-0 items-center">
+                      {s.review && role === 'tech' && (
+                        <div className="mr-4 flex flex-col items-end">
+                          <div className="pointer-events-none scale-75 origin-right">
+                            <StarRatingInput value={s.review.rating} onChange={()=>{}} readonly />
+                          </div>
+                          {s.review.comment && (
+                            <p className="text-xs text-[#505f76] italic max-w-[200px] truncate">"{s.review.comment}"</p>
+                          )}
+                        </div>
+                      )}
                       {s.status === 'completed' && role === 'client' && (
                         <button
                           onClick={() => navigate(`/services/${s.id}/review`)}
