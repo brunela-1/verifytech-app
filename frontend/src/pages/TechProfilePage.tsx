@@ -119,16 +119,16 @@ export default function TechProfilePage() {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="label">Especialidad Principal</label>
-                  <div className="relative">
-                    <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#94a3b8]" />
-                    <input type="text" className="input pl-9" placeholder="Ej. Electricista" value={specialty} onChange={e=>setSpecialty(e.target.value)} />
+                  <div className="input-icon-wrap">
+                    <Briefcase className="input-icon" />
+                    <input type="text" className="input" placeholder="Ej. Electricista" value={specialty} onChange={e=>setSpecialty(e.target.value)} />
                   </div>
                 </div>
                 <div>
                   <label className="label">Años de Experiencia</label>
-                  <div className="relative">
-                    <Award className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#94a3b8]" />
-                    <input type="number" min="0" className="input pl-9" placeholder="Ej. 5" value={experience} onChange={e=>setExperience(e.target.value)} />
+                  <div className="input-icon-wrap">
+                    <Award className="input-icon" />
+                    <input type="number" min="0" className="input" placeholder="Ej. 5" value={experience} onChange={e=>setExperience(e.target.value)} />
                   </div>
                 </div>
               </div>
