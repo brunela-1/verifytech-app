@@ -3,7 +3,8 @@ import TopNavBar from '../components/TopNavBar';
 import TechVerificationBadge from '../components/TechVerificationBadge';
 import { getMyTechProfile, updateMyTechProfile, uploadDocuments } from '../api/techs';
 import { useAuth } from '../store/AuthContext';
-import { User, Briefcase, Award, Link as LinkIcon } from 'lucide-react';
+import { User, Briefcase, Award, Link as LinkIcon, Star } from 'lucide-react';
+import StarRatingInput from '../components/StarRatingInput';
 import type { TechProfileData } from '../types';
 import { FileUploadZone } from '../components/FileUploadZone';
 import { uploadTechDoc, uploadProfilePhoto } from '../lib/storage';
@@ -95,9 +96,21 @@ export default function TechProfilePage() {
         {/* Left Col: Public Info */}
         <div className="space-y-6">
           <div className="card p-6">
-            <h2 className="text-xl font-bold text-[#191c1e] mb-6 flex items-center gap-2">
-              <User className="text-[#004ac6] w-5 h-5" /> Información Pública
-            </h2>
+            <div className="flex justify-between items-start mb-6">
+              <h2 className="text-xl font-bold text-[#191c1e] flex items-center gap-2">
+                <User className="text-[#004ac6] w-5 h-5" /> Información Pública
+              </h2>
+              {profile && (
+                <div className="text-right">
+                  <div className="flex items-center gap-1 justify-end pointer-events-none scale-75 origin-right">
+                    <StarRatingInput value={Math.round(profile.rating_avg || 0)} onChange={()=>{}} readonly />
+                  </div>
+                  <p className="text-xs text-[#505f76] font-medium mt-1">
+                    {profile.rating_avg.toFixed(1)} ({profile.reviews_count} {profile.reviews_count === 1 ? 'reseña' : 'reseñas'})
+                  </p>
+                </div>
+              )}
+            </div>
             <form onSubmit={handleSaveInfo} className="space-y-4">
               <div>
                 <label className="label">Nombre Completo</label>

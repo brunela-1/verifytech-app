@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Clock, DollarSign, Calendar, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 import type { ProposalData, AvailabilityBlockData } from '../types';
+import { Link } from 'react-router-dom';
 
 interface ProposalCardProps {
   proposal: ProposalData;
@@ -49,9 +50,9 @@ export default function ProposalCard({
               {proposal.tech_id.slice(0, 1).toUpperCase()}
             </div>
             <div>
-              <p className="font-bold text-[#191c1e] text-sm">
+              <Link to={`/techs/${proposal.tech_id}`} className="font-bold text-[#004ac6] hover:underline text-sm flex items-center gap-1">
                 Técnico #{proposal.tech_id.slice(0, 8)}
-              </p>
+              </Link>
               {proposal.created_at && (
                 <p className="text-xs text-[#94a3b8] mt-0.5">
                   {new Date(proposal.created_at).toLocaleString('es-PE', {
