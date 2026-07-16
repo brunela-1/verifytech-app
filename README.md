@@ -1,4 +1,4 @@
-# TécnicoConfianza
+# VerifiTech
 
 Plataforma de marketplace para conectar clientes con técnicos verificados (plomeros, electricistas, etc.).
 
