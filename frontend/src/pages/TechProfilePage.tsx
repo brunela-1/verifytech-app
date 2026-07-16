@@ -103,10 +103,10 @@ export default function TechProfilePage() {
               {profile && (
                 <div className="text-right">
                   <div className="flex items-center gap-1 justify-end pointer-events-none scale-75 origin-right">
-                    <StarRatingInput value={Math.round(profile.rating_avg || 0)} onChange={()=>{}} readonly />
+                    <StarRatingInput value={Math.round(Number(profile.rating_avg || 0))} onChange={()=>{}} readonly />
                   </div>
                   <p className="text-xs text-[#505f76] font-medium mt-1">
-                    {profile.rating_avg.toFixed(1)} ({profile.reviews_count} {profile.reviews_count === 1 ? 'reseña' : 'reseñas'})
+                    {Number(profile.rating_avg || 0).toFixed(1)} ({profile.reviews_count || 0} {(profile.reviews_count || 0) === 1 ? 'reseña' : 'reseñas'})
                   </p>
                 </div>
               )}
